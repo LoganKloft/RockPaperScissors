@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>RockPaperScissors</title>
+        <title>Rock Paper Scissors</title>
         <meta charset="utf-8">
         <script src="rock_paper_scissors.js" defer></script>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <button id="rock">Rock</button>
-        <button id="scissors">Scissors</button>
-        <button id="paper">Paper</button>
-        <div id="results"></div>
-        <div id="score"></div>
+        <div class="content">
+            <div class="scores">
+                <p id="player-score"></p>
+                <p id="results"></p>
+                <p id="computer-score"></p>
+            </div>
+            <div class="options">
+                <div class="img-src">
+                    <img id="rock" class="option" src="images/rock.png" alt="rock icon">
+                    <a href="https://www.flaticon.com/free-icons/rock" title="rock icons">Rock icons created by Freepik - Flaticon</a>
+                </div>
+                <div class="img-src">
+                    <img id="scissors" class="option" src="images/scissors.png" alt="scissors icon">
+                    <a href="https://www.flaticon.com/free-icons/scissors" title="scissors icons">Scissors icons created by Freepik - Flaticon</a>
+                </div>
+                <div class="img-src">
+                    <img id="paper" class="option" src="images/paper.png" alt="paper icon">
+                    <a href="https://www.flaticon.com/free-icons/paper" title="paper icons">Paper icons created by Freepik - Flaticon</a>
+                </div>
+            </div>
+            <button id="restart">Restart</button>
+        </div>
     </body>
 </html>

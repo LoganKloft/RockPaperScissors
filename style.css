@@ -1,0 +1,42 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.options {
+    display: flex;
+}
+
+.option:hover {
+    background-color: rgba(0, 0, 0, .20);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-between;
+}
+
+#player-score {
+    background-color: lightgreen;
+}
+
+#computer-score {
+    background-color: lightcoral;
+}
+
+.img-src {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}

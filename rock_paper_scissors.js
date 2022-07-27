@@ -1,3 +1,14 @@
+let results = document.querySelector('#results');
+let playerScoreELE = document.querySelector('#player-score');
+let computerScoreELE = document.querySelector('#computer-score');
+let playerScore = 0;
+let computerScore = 0;
+
+let rockButton = document.querySelector('#rock');
+let scissorsButton = document.querySelector('#scissors');
+let paperButton = document.querySelector('#paper');
+let restartButton = document.querySelector('#restart');
+
 function getComputerChoice() {
     choices = ["Rock", "Paper", "Scissors"];
     choice = (Math.floor(Math.random() * 3)) + 1;
@@ -65,22 +76,60 @@ function disableButtons() {
     paperButton.removeEventListener('click', choosePaper);
 }
 
+function enableButtons() {
+    rockButton.addEventListener('click', chooseRock);
+    scissorsButton.addEventListener('click', chooseScissors);
+    paperButton.addEventListener('click', choosePaper);
+}
+
+function enableRestart() {
+    restartButton.addEventListener('click', restartGame);
+    restartButton.style.display = "inline";
+}
+
+function disableRestart() {
+    restartButton.removeEventListener('click', restartGame);
+    restartButton.style.display = "none";
+}
+
+function displayScores() {
+    playerScoreELE.innerText = `${playerScore}`;
+    computerScoreELE.innerText = `${computerScore}`;
+}
+
+function resetScores() {
+    playerScore = 0;
+    computerScore = 0;
+    results.innerText = '';
+}
+
+function restartGame() {
+    resetScores();
+    displayScores();
+    disableButtons();
+    enableButtons();
+    disableRestart();
+    results.innerText = "Choose your weapon!";
+}
+
 function choose(playerSelection) {
     let result = playRound(playerSelection, getComputerChoice());
     if (result > 0) {
         playerScore++;
+        playerScoreELE.innerText = `${playerScore}`;
     } else if (result < 0) {
         computerScore++;
+        computerScoreELE.innerText = `${computerScore}`;
     }
 
     if (playerScore === 5) {
-        score.innerText = `Game over. Player wins! Final Score: ${playerScore} ${computerScore}`;
+        results.innerText = `Game over. Player wins!`;
         disableButtons();
+        enableRestart();
     } else if (computerScore === 5) {
-        score.innerText = `Game over. Computer wins! Final Score: ${playerScore} ${computerScore}`;
+        results.innerText = `Game over. Computer wins!`;
         disableButtons();
-    } else {
-        score.innerText = `${playerScore} ${computerScore}`;
+        enableRestart();
     }
 }
 
@@ -96,15 +145,4 @@ function choosePaper() {
     choose("Paper");
 }
 
-let results = document.querySelector('#results');
-let score = document.querySelector('#score');
-let playerScore = 0;
-let computerScore = 0;
-
-let rockButton = document.querySelector('#rock');
-let scissorsButton = document.querySelector('#scissors');
-let paperButton = document.querySelector('#paper');
-
-rockButton.addEventListener('click', chooseRock);
-scissorsButton.addEventListener('click', chooseScissors);
-paperButton.addEventListener('click', choosePaper);
+restartGame();
